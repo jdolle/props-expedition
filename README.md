@@ -5,7 +5,7 @@ Props Expedition
 
 ## Installation
 
-`Props Expedition` is not on NPM until a stable version is released. This package is currently under development.
+`npm install props-expedition`
 
 ## Why?
 
@@ -86,6 +86,10 @@ Additionally, each transform function is passed the `nextProps`, current `props`
 ##### Async Props
 - https://github.com/ericclemmons/react-resolver
 - https://github.com/ryanflorence/async-props
+
+## Contributions
+
+We are excited to see your work! To contribute see [Contributing](./.github/CONTRIBUTING.md)
 
 ## License
 
