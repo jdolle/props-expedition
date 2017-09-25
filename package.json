@@ -1,0 +1,99 @@
+{
+  "name": "props-expedition",
+  "version": "0.1.0",
+  "description": "A React Higher Order Component to help explore your props! Supports async.",
+  "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "webpack --env prod",
+    "test": "jest --ci --colors",
+    "lint": "tslint \"src/**/*.{ts,tsx}\" --type-check --project tsconfig.json -t codeFrame -e \"node_modules/**/*\"",
+    "types-checker": "types-checker"
+  },
+  "jest": {
+    "cacheDirectory": "jest_cache",
+    "browser": true,
+    "modulePaths": [
+      "src"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "mapCoverage": true,
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdolle/props-expedition.git"
+  },
+  "keywords": [
+    "react",
+    "props",
+    "map",
+    "hoc",
+    "component",
+    "computed",
+    "properties",
+    "async",
+    "componentWillReceiveProps"
+  ],
+  "author": "Jeff Dolle (jeff@jeffdolle.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdolle/props-expedition/issues"
+  },
+  "homepage": "https://github.com/jdolle/props-expedition#readme",
+  "dependencies": {
+    "react": "^15.6.1"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^2.8.8",
+    "@types/jest": "^20.0.8",
+    "@types/node": "^8.0.28",
+    "@types/react": "^16.0.5",
+    "@types/webpack": "^3.0.11",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^2.0.0",
+    "jest": "^21.1.0",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "source-map-loader": "^0.2.1",
+    "ts-jest": "^21.0.1",
+    "ts-loader": "^2.3.7",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "tslint-consistent-codestyle": "^1.6.0",
+    "tslint-eslint-rules": "^4.1.1",
+    "tslint-microsoft-contrib": "^5.0.1",
+    "tslint-misc-rules": "^3.2.0",
+    "tslint-react": "^3.2.0",
+    "types-checker": "0.0.7",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0"
+  }
+}

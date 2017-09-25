@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`explore() componentWillReceiveProps forwards basic props 1`] = `
+<BasicComponent
+  foo="bar"
+  passes={true}
+/>
+`;
+
+exports[`explore() componentWillReceiveProps maps async props 1`] = `
+<BasicComponent
+  foo={false}
+  kind="nobar"
+/>
+`;
+
+exports[`explore() componentWillReceiveProps maps async props 2`] = `
+<BasicComponent
+  foo={true}
+  kind="bar"
+/>
+`;
+
+exports[`explore() componentWillReceiveProps maps basic props 1`] = `
+<BasicComponent
+  didThisPass="yes"
+  passes={true}
+/>
+`;
+
+exports[`explore() componentWillReceiveProps maps undefined from errored async props 1`] = `
+<BasicComponent
+  foo={true}
+/>
+`;
+
+exports[`explore() constructor forwards basic props 1`] = `
+<BasicComponent
+  passes={true}
+/>
+`;
+
+exports[`explore() constructor forwards nothing for {} 1`] = `<BasicComponent />`;
+
+exports[`explore() constructor maps as a decorator 1`] = `
+<ExampleComponent
+  didThisPass="yes"
+  passes={true}
+/>
+`;
+
+exports[`explore() constructor maps basic props 1`] = `
+<BasicComponent
+  didThisPass="yes"
+  passes={true}
+/>
+`;
+
+exports[`explore() constructor maps successful async props 1`] = `
+<BasicComponent
+  kind="I'm a promise!"
+/>
+`;
+
+exports[`explore() constructor maps undefined from errored async props 1`] = `<BasicComponent />`;

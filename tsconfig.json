@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost"],
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "classic",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true
+  }
+}

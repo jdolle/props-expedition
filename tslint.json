@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "tslint-react",
+    "tslint:recommended",
+    "tslint-eslint-rules",
+    "tslint-consistent-codestyle",
+    "tslint-microsoft-contrib"
+  ],
+  "rulesDirectory": [
+    "./node_modules/tslint-misc-rules/rules"
+  ],
+  "rules": {
+    "no-unused-variable": true,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "semicolon": [true, "never"],
+    "typedef": false,
+    "variable-name": false,
+    "arrow-parens": true,
+    "function-name": false,
+    "no-any": false,
+    "no-unsafe-any": false,
+
+    "import-name": false,
+    "interface-name": false,
+
+    "react-tsx-curly-spacing": false,
+
+    "object-curly-spacing": [true, "never"]
+  }
+}
