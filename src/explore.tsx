@@ -31,22 +31,7 @@ export function explore<
 
       constructor(props: Props) {
         super(props)
-        const initialState: ExploreProps = Object.keys(transform).reduce(
-          (sumState: State, key: string) => {
-            const value = transform[key](props, {}, undefined)
-
-            if (value instanceof Promise) {
-              this.resolvePromiseToKey(value, key)
-
-            } else {
-              sumState[key] = value
-            }
-
-            return sumState
-          },
-          {},
-        ) as ExploreProps
-        this.state = initialState
+        this.state = this.buildState(props)
 
         // NOTE( JMD): Need to somehow handle errors from async calls
         // const errors = {}
@@ -61,16 +46,8 @@ export function explore<
       }
 
       public componentWillReceiveProps(nextProps: Readonly<Props>): void {
-        Object.keys(transform).forEach(async (key: string) => {
-          const value = transform[key](nextProps, this.props, this.state[key])
-
-          if (value instanceof Promise) {
-            this.resolvePromiseToKey(value, key)
-
-          } else {
-            this.setState({[key]: value})
-          }
-        })
+        const nextState = this.buildState(nextProps, this.state)
+        this.setState(nextState)
       }
 
       public render(): JSX.Element {
@@ -83,20 +60,32 @@ export function explore<
         )
       }
 
-      // tslint:disable-next-line
-      // TODO (JMD): Make private. Figure out https://github.com/Microsoft/TypeScript/issues/17293
-      public resolvePromiseToKey<T>(promise: Promise<T>, key: string) {
-        promise
-          .then((data) => {
-            this.setState({
-              [key]: data,
-            })
-          })
-          .catch(() => {
-            this.setState({
-              [key]: undefined, // Async value got rejected. Set to undefined.
-            })
-          })
+      public buildState(nextProps: Props, state: State = {}) {
+        return Object.keys(transform).reduce(
+          (sumState: State, key: string) => {
+            const value = transform[key](nextProps, {}, state[key])
+
+            if (value instanceof Promise) {
+              value
+                .then((data) => {
+                  this.setState({
+                    [key]: data,
+                  })
+                })
+                .catch(() => {
+                  this.setState({
+                    [key]: undefined, // Async value got rejected. Set to undefined.
+                  })
+                })
+
+            } else {
+              sumState[key] = value
+            }
+
+            return sumState
+          },
+          {},
+        ) as ExploreProps
       }
     }
   }
