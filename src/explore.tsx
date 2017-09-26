@@ -46,7 +46,7 @@ export function explore<
       }
 
       public componentWillReceiveProps(nextProps: Readonly<Props>): void {
-        const nextState = this.buildState(nextProps, this.state)
+        const nextState = this.buildState(nextProps, this.props, this.state)
         this.setState(nextState)
       }
 
@@ -60,10 +60,10 @@ export function explore<
         )
       }
 
-      public buildState(nextProps: Props, state: State = {}) {
+      public buildState(nextProps: Props, props: Props | {} = {}, state: State = {}) {
         return Object.keys(transform).reduce(
           (sumState: State, key: string) => {
-            const value = transform[key](nextProps, {}, state[key])
+            const value = transform[key](nextProps, props, state[key])
 
             if (value instanceof Promise) {
               value

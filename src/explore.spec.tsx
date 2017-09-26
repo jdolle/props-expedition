@@ -190,6 +190,8 @@ describe('explore()', () => {
         expect(wrapper).toMatchSnapshot()
       }
     })
+
+    it('passes in nextProps, props, and value')
   })
 
   // NOTE (JMD): Began work adding a way to handle errors for async props, but put on hold.
