@@ -3,6 +3,8 @@ Props Expedition
 
 > A guide on your journey to React component properties through async fetching and property mapping
 
+[![Build Status](https://travis-ci.com/jdolle/props-expedition.svg?token=bKaa5YFrd5hatqpSxpPA&branch=master)](https://travis-ci.com/jdolle/props-expedition)
+
 ## Installation
 
 `npm install props-expedition`

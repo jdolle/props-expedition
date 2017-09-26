@@ -1,0 +1,6 @@
+src
+node_modules
+jest_cache
+coverage
+.github
+.travis.yml
