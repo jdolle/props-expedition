@@ -15,7 +15,7 @@ Props Expedition
 
 - **Reusable** — PropsExpedition increasing reusability of components by mapping implementation specific data to generic, visual data. I.e. a stateless component may have a field `title`. This component may be used to display a `user` as well a `favorite_game`. By utilizing PropsExpedition, instead of pulling out the title like `<Example title={user.name} body={user.bio}/>` and `<Example title={favorite_game.displayName} body={favorite_game.description}/>`, these components can be wrapped to make them more readable. Through wrapping this becomes `<UserExample user={user}/>` and `<GameExample game={favorite_game}/>`. Internally the user and game would have their properties mapped to title and body. This is more declarative, more concise, and less error prone.
 
-- **Typescript Support** - Typescript definitions are included in the package.
+- **TypeScript Support** - TypeScript definitions are included in the package.
 
 ## Usage
 
@@ -67,9 +67,36 @@ class Example extends React.PureComponent {
 
 ## API
 
-#### `explore(config)(component)`
+#### `explore(config)(component)` *function*
   - arguments
     - **config** *object* `{[key: string]: (nextProps, props, value) => nextValue}` An object containing transform functions that return the new value of the property. The property name is the key.
+  - return
+    - **Explorer** *function* Higher Order Component
+
+## TypeScript Types
+
+#### `ExploreConfig<Props, ExploreProps>` *object*
+  - generics
+    - **Props** *object* The props being mapped from
+    - **ExploreProps** *object* The props being mapped to
+  - value
+    - **[Key in keyof ExploreProps]**
+      - value
+        - **TransformFn** *function* See below
+
+#### `TransformFn<Props, ExploreProps, Key>` *function*
+  - generics
+    - **Props** *object* The props being mapped from
+    - **ExploreProps** *object* The props being mapped to
+    - **Key** *extends keyof ExploreProps* The key in ExploreProps that is being transformed.
+  - value
+    - *function*
+      - arguments
+        - **nextProps** *undefined | Props*
+        - **props** *undefined | Props | {}*
+        - **value** *undefined | ExploreProps[Key]*
+      - return
+        - **nextValue** *ExploreProps[Key] | Promise<ExploreProps[Key]*
 
 ## Similar Packages
 
