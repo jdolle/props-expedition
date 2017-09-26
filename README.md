@@ -1,7 +1,7 @@
 Props Expedition
 ================
 
-> A guide on your journey to React component properties through async fetching and property mapping
+> A guide on your journey through React component properties. Handle asynchronous calls and property transforms without boilerplate.
 
 [![Build Status](https://travis-ci.com/jdolle/props-expedition.svg?token=bKaa5YFrd5hatqpSxpPA&branch=master)](https://travis-ci.com/jdolle/props-expedition)
 
@@ -9,19 +9,13 @@ Props Expedition
 
 `npm install props-expedition`
 
-## Why?
+## Features
 
-Ever made an async call in `componentWillReceiveProps`? Ever performed complicated transforms on props? Ever had to set state in both the `constructor` and `componentWillReceiveProps`? Then you know why.
+- **Simple** — React is all about rendering components. To render you need to know `what is the data?` and `how should it be displayed?`. PropsExpedition tells you what is the data, so that you can tell React (+ JSX) how it should be displayed.
 
-### Simple
+- **Reusable** — PropsExpedition increasing reusability of components by mapping implementation specific data to generic, visual data. I.e. a stateless component may have a field `title`. This component may be used to display a `user` as well a `favorite_game`. By utilizing PropsExpedition, instead of pulling out the title like `<Example title={user.name} body={user.bio}/>` and `<Example title={favorite_game.displayName} body={favorite_game.description}/>`, these components can be wrapped to make them more readable. Through wrapping this becomes `<UserExample user={user}/>` and `<GameExample game={favorite_game}/>`. Internally the user and game would have their properties mapped to title and body. This is more declarative, more concise, and less error prone.
 
-React is all about rendering components. To render you need to know `what is the data?` and `how should it be displayed?`. Anything outside of that belongs outside of a component. PropsExpedition tells you what the data is, and React (+ JSX) tells the browser how it should be displayed.
-
-### Reusable
-
-PropsExpedition also has the added benefit of increasing reusability of stateless components by mapping implementation specific data to visual data. I.e. a stateless component may have a field `title`. This component may be used to display a `user` as well a `favorite_game`. By utilizing PropsExpedition, instead of pulling out the title like `<Example title={user.name} body={user.bio}/>` and `<Example title={favorite_game.displayName} body={favorite_game.description}/>`, these components can be wrapped to make them more readable. Through wrapping this becomes `<UserExample user={user}/>` and `<GameExample game={favorite_game}/>`. Internally the user and game would have their properties mapped to title and body. This is more declarative, more concise, and less error prone.
-
-An important note [in React, but also] about the above example is that `user` and `favorite_game` should be immutable objects. Otherwise, adjusting `user.name` would not trigger an update to `UserExample`.
+- **Typescript Support** - Typescript definitions are included in the package.
 
 ## Usage
 
@@ -70,6 +64,12 @@ class Example extends React.PureComponent {
   }
 }
 ```
+
+## API
+
+#### `explore(config)(component)`
+  - arguments
+    - **config** *object* `{[key: string]: (nextProps, props, value) => nextValue}` An object containing transform functions that return the new value of the property. The property name is the key.
 
 ## Similar Packages
 
