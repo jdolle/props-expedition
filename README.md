@@ -1,9 +1,11 @@
 Props Expedition
 ================
 
-```
+<aside class="warning">
   This project is NOT actively supported. Feel free to take concepts and apply them to your own. But this is untested and unfinished, and due to lack of time, will remain so.
-```
+</aside>
+
+-----------
 
 > A guide on your journey through React component properties. Handle asynchronous calls and property transforms without boilerplate.
 
