@@ -1,13 +1,17 @@
 Props Expedition
 ================
 
+```
+  This project is NOT actively supported. Feel free to take concepts and apply them to your own. But this is untested and unfinished, and due to lack of time, will remain so.
+```
+
 > A guide on your journey through React component properties. Handle asynchronous calls and property transforms without boilerplate.
 
 [![Build Status](https://travis-ci.com/jdolle/props-expedition.svg?token=bKaa5YFrd5hatqpSxpPA&branch=master)](https://travis-ci.com/jdolle/props-expedition)
 
 ## Installation
 
-`npm install props-expedition`
+~`npm install props-expedition`~
 
 ## Features
 
